@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "L8yjURgR9LLNNXLYY0wtoYPKxDx4R2bI1Bic/zZEsIK0ongf6A589qECy6oyIHwTXB0h8wVIb60K7esQMV5f8Q==",
+  "dgSpecHash": "JO4cqcQms8fadk4CEommAnv5SgRVhPRWDQ8+8+XyaIdAvemB6Y63gdWCmz4RFVZ+9+dtFd7kkYjuCiw7izOrzg==",
   "success": true,
   "projectFilePath": "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\psydi\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
-    "C:\\Users\\psydi\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\psydi\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
