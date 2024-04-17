@@ -15,6 +15,4 @@ public interface IUserRepository{
     //DELETS
     //For delete the acount
     Task<bool> DeleteUserAsync(string password);
-    //Validate user exist
-    Task<bool> ExistUserAsync(string mail);
 }

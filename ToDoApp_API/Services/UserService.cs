@@ -15,27 +15,21 @@ namespace ToDoApp_API.Services
             _userRepository = userRepository; 
         }
 
-        public async Task<User> CreateUserAsync
-        (
-            string password,
-            string mail,
-            string firstName,
-            string lastName
-        )
+        public async Task<User> CreateUserAsync(User user)
         {
-            if (password.Length !>= 8 ||
-                mail.Length !>= 8 ||
-                firstName.Length !>= 3 ||
-                lastName.Length !>= 3)
+            if (user.Password.Length !>= 8 ||
+                user.Mail.Length !>= 8 ||
+                user.FirtstName.Length !>= 3 ||
+                user.LastName.Length !>= 3)
             {
                 throw new AppValidationException("One of the fields haven't correct format");
             } 
 
             bool queryOperation = await _userRepository
-                .CreateUserAsync(password, mail, firstName, lastName);
+                .CreateUserAsync(user);
             if (!queryOperation)
                 throw new AppValidationException("Operation executed but wasn't changes");
-            return await GetUserAsync(mail);
+            return await GetUserAsync(user.Mail);
         }
 
         public async Task<User> GetUserAsync(string mail)
@@ -46,5 +40,10 @@ namespace ToDoApp_API.Services
                 throw new AppValidationException($"Couldn't fount user with the mail: {mail}");
             return queryResult;
         }
+        public async Task<ICollection<User>> GetUsersAsync()
+        {
+            return await _userRepository.GetUsersAsync();
+        }
+
     }
 }
