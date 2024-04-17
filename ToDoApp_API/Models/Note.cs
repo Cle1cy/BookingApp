@@ -1,6 +1,6 @@
 namespace ToDoApp_API.Models;
 
-public class Notes{
+public class Note{
 
     public int Id { get; set; }
     public string title{ get; set;}

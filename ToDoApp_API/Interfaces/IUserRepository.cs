@@ -1,16 +1,16 @@
 using ToDoApp_App.Models;
 
 namespace ToDoApp_API.Interfaces;
-public interface IUsersRepository{
+public interface IUserRepository{
     // GETTERS
     Task<ICollection<User>> GetUsersAsync();
     Task<User> GetUserAsync(int id);
     //SETTERS   
-    Task<User> CreateUserAsync(
+    Task<bool> CreateUserAsync(
         string password,
         string mail,
-        string firstNamr,
-        string lastNamr
+        string firstName,
+        string lastName
     );
     //UPDATES
     Task<User> UpdateUserMailAsync(string mail);

@@ -32,3 +32,5 @@ C:\Users\psydi\OneDrive\Escritorio\ToDoApp\ToDoApp_API\obj\Debug\net8.0\refint\T
 C:\Users\psydi\OneDrive\Escritorio\ToDoApp\ToDoApp_API\obj\Debug\net8.0\ToDoApp_API.pdb
 C:\Users\psydi\OneDrive\Escritorio\ToDoApp\ToDoApp_API\obj\Debug\net8.0\ToDoApp_API.genruntimeconfig.cache
 C:\Users\psydi\OneDrive\Escritorio\ToDoApp\ToDoApp_API\obj\Debug\net8.0\ref\ToDoApp_API.dll
+C:\Users\psydi\OneDrive\Escritorio\ToDoApp\ToDoApp_API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\psydi\OneDrive\Escritorio\ToDoApp\ToDoApp_API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
