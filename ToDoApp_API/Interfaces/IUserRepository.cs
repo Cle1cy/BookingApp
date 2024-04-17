@@ -4,25 +4,17 @@ namespace ToDoApp_API.Interfaces;
 public interface IUserRepository{
     // GETTERS
     Task<ICollection<User>> GetUsersAsync();
-    Task<User> GetUserAsync(int id);
+    Task<User> GetUserAsync(string mail);
     //SETTERS   
-    Task<bool> CreateUserAsync(
-        string password,
-        string mail,
-        string firstName,
-        string lastName
-    );
+    Task<bool> CreateUserAsync(User OneUser);
     //UPDATES
-    Task<User> UpdateUserMailAsync(string mail);
-    Task<User> UpdateUserPasswordAsync(string password);
-    Task<User> UpdateUserFirstNameAsync(string firtstName);
-    Task<User> UpdateUserLastNameAsync(string lastName);
+    Task<bool> UpdateUserMailAsync(string mail);
+    Task<bool> UpdateUserPasswordAsync(string password);
+    Task<bool> UpdateUserFirstNameAsync(string firtstName);
+    Task<bool> UpdateUserLastNameAsync(string lastName);
     //DELETS
     //For delete the acount
-    Task<User> DeleteUserAsync(
-        string password, 
-        bool accept
-    );
+    Task<bool> DeleteUserAsync(string password);
     //Validate user exist
-    Task<bool> ExistUserAsync(int id);
+    Task<bool> ExistUserAsync(string mail);
 }
