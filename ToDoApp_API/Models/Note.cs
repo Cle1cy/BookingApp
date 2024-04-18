@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
@@ -16,9 +18,8 @@ public class Note{
     [JsonPropertyName("state")]
     public int state { get; set; } = 0;
     [JsonPropertyName("startDate")]
-    public string StartDate { get; set; } = string.Empty;
+    public DateOnly StartDate { get; set; } = DateOnly.FromDateTime(DateTime.Now);
     [JsonPropertyName("dateOnly")]
-    public string DateOnly { get; set;} = string.Empty;
+    public DateOnly DateOnly { get; set; } = DateOnly.FromDateTime(DateTime.Now);
 
-    
 }

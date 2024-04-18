@@ -35,11 +35,11 @@ namespace ToDoApp_API.Services
         {
             var queryResult = await _userRepository
                     .GetUserAsync(mail);
-            if (queryResult.Id != 0)
+            if (queryResult.Id !> 0)
                 throw new AppValidationException($"Couldn't fount user with the mail: {mail}");
             return queryResult;
         }
-        public async Task<ICollection<User>> GetUserAsync()
+        public async Task<ICollection<User>> GetUsersAsync()
         {
             return await _userRepository.GetUserAsync();
         }
