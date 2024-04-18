@@ -1,15 +1,22 @@
 using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 using ToDoApp_API.Models;
 
 namespace ToDoApp_App.Models;
 
 public class User{
 
-    public int Id { get; set;}
-    public string Password{get; set;}
-    public string Mail{get; set;}
-    public string FirtstName{get; set;}
-    public string LastName{get;set;}
-    public ICollection<Note> Notes{get; set;}
+    [JsonPropertyName("id")]
+    public int Id { get; set; } = 0;
+    [JsonPropertyName("password")]
+    public string Password{get; set;} = string.Empty;
+    [JsonPropertyName("mail")]
+    public string Mail { get; set; } = string.Empty;
+    [JsonPropertyName("firstName")]
+    public string FirtstName { get; set; } = string.Empty;
+    [JsonPropertyName("lastName")]
+    public string LastName{get;set;} = string.Empty;
+    [JsonPropertyName("notes")]
+    public ICollection<Note> Notes{get; set;} = new List<Note>();
 
 }

@@ -12,20 +12,14 @@ using ToDoApp_App.Models;
 
 public class UserRepository : IUserRepository
 {
-    public readonly DBContext _dbContext;
-    public readonly UserService _userService;
+    public DBContext _dbContext;
+    public UserService _userService;
 
     public UserRepository (DBContext context, UserService userService)
     {
         _dbContext = context;
         _userService = userService;
     }
-    public async Task<ICollection<User>> GetUsersAsync()
-    {
-        return await _dbContext.Users
-                .ToListAsync();
-    }
-    
     public async Task<User> GetUserAsync(string mail)
     {
         User user = new();
@@ -36,7 +30,12 @@ public class UserRepository : IUserRepository
             user = queryResult;
         return user;
     }
-    
+    public async Task<ICollection<User>> GetUsersAsync()
+    {
+        return await _dbContext.Users
+                .ToListAsync();
+    }
+  
     public async Task<bool> CreateUserAsync(User OneUser)
     {
         User user = new User()
@@ -69,7 +68,7 @@ public class UserRepository : IUserRepository
             .Where(u => u.Password == password)
             .FirstOrDefaultAsync();
 
-        if(user == null) throw new DbOperationException("Couldn't delete, user already exist");
+        if(user == null) throw new DbOperationException("Couldn't delete, user doesn't exist");
         try
         {
             _dbContext.Users.Remove(user);

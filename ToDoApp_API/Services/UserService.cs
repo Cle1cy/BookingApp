@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using ToDoApp_API.Helpers;
 using ToDoApp_API.Interfaces;
 using ToDoApp_App.Models;
@@ -43,6 +44,13 @@ namespace ToDoApp_API.Services
         public async Task<ICollection<User>> GetUsersAsync()
         {
             return await _userRepository.GetUsersAsync();
+        }
+
+        public async Task<bool> DeleteUserAsync(string password)
+        {
+            bool queryResult = await _userRepository.DeleteUserAsync(password);
+            if (!queryResult) throw new AppValidationException("Operation executed but wasn't changes");
+            return queryResult;
         }
 
     }
