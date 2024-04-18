@@ -16,7 +16,7 @@ public class User{
     public string FirtstName { get; set; } = string.Empty;
     [JsonPropertyName("lastName")]
     public string LastName{get;set;} = string.Empty;
-    [JsonPropertyName("notes")]
-    public ICollection<Note> Notes{get; set;} = new List<Note>();
+    [JsonPropertyName("Note")]
+    public ICollection<Note> Note{get; set;} = new List<Note>();
 
 }

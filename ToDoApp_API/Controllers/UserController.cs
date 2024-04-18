@@ -9,11 +9,11 @@ namespace ToDoApp_API.Controller
     [ApiController]
     public class UserControllers : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly Userervice _Userervice;
 
-        public UserControllers(UserService userService)
+        public UserControllers(Userervice Userervice)
         {
-            _userService = userService;
+            _Userervice = Userervice;
         }
 
         [HttpPost]
@@ -21,7 +21,7 @@ namespace ToDoApp_API.Controller
         {
             try
             {
-                User queryResult = await _userService.CreateUserAsync(user);
+                User queryResult = await _Userervice.CreateUserAsync(user);
 
                 return Ok(queryResult);
             }

@@ -1,27 +1,25 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
+﻿
 using ToDoApp_API.Helpers;
 using ToDoApp_API.Interfaces;
 using ToDoApp_App.Models;
 
 namespace ToDoApp_API.Services
 {
-    public class UserService
+    public class Userervice
     {
         IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository) 
+        public Userervice(IUserRepository userRepository) 
         {  
             _userRepository = userRepository; 
         }
 
         public async Task<User> CreateUserAsync(User user)
         {
-            if (user.Password.Length !>= 8 ||
-                user.Mail.Length !>= 8 ||
-                user.FirtstName.Length !>= 3 ||
-                user.LastName.Length !>= 3)
+            if (user.Password.Length <= 8 ||
+                user.Mail.Length <= 8 ||
+                user.FirtstName.Length <= 3 ||
+                user.LastName.Length <= 3)
             {
                 throw new AppValidationException("One of the fields haven't correct format");
             } 
@@ -41,9 +39,9 @@ namespace ToDoApp_API.Services
                 throw new AppValidationException($"Couldn't fount user with the mail: {mail}");
             return queryResult;
         }
-        public async Task<ICollection<User>> GetUsersAsync()
+        public async Task<ICollection<User>> GetUserAsync()
         {
-            return await _userRepository.GetUsersAsync();
+            return await _userRepository.GetUserAsync();
         }
 
         public async Task<bool> DeleteUserAsync(string password)

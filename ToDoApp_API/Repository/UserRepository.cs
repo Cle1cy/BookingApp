@@ -1,7 +1,6 @@
 namespace ToDoApp_API.Repository;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ToDoApp_API.Context;
@@ -13,44 +12,40 @@ using ToDoApp_App.Models;
 public class UserRepository : IUserRepository
 {
     public DBContext _dbContext;
-    public UserService _userService;
 
-    public UserRepository (DBContext context, UserService userService)
+    public UserRepository (DBContext context)
     {
         _dbContext = context;
-        _userService = userService;
     }
     public async Task<User> GetUserAsync(string mail)
     {
         User user = new();
-        var queryResult = await _dbContext.Users
+        var queryResult = await _dbContext.User
                 .Where(u => u.Mail == mail)
                 .FirstOrDefaultAsync();
         if (queryResult is not null)
             user = queryResult;
         return user;
     }
-    public async Task<ICollection<User>> GetUsersAsync()
+    public async Task<ICollection<User>> GetUserAsync()
     {
-        return await _dbContext.Users
+        return await _dbContext.User
                 .ToListAsync();
     }
   
     public async Task<bool> CreateUserAsync(User OneUser)
     {
-        User user = new User()
-        {
-            Password = OneUser.Password,
-            Mail = OneUser.Mail,
-            FirtstName = OneUser.FirtstName,
-            LastName = OneUser.LastName
-        };
-        if (await _userService.GetUserAsync(OneUser.Mail) is not null) 
+
+        User? exist = await _dbContext.User
+                .Where(u => u.Mail == OneUser.Mail)
+                .FirstOrDefaultAsync();
+
+        if (exist is not null) 
             throw new DbOperationException("Couldn't insert. Account already exist.");
         try
         {
             var queryResult = await _dbContext
-                    .AddAsync(user);
+                    .AddAsync(OneUser);
 
             if (queryResult is not null)
                 return true;
@@ -64,14 +59,14 @@ public class UserRepository : IUserRepository
 
     public async Task<bool> DeleteUserAsync(string password) //made a override of GetUserAsync
     {
-        User? user = await _dbContext.Users
+        User? user = await _dbContext.User
             .Where(u => u.Password == password)
             .FirstOrDefaultAsync();
 
         if(user == null) throw new DbOperationException("Couldn't delete, user doesn't exist");
         try
         {
-            _dbContext.Users.Remove(user);
+            _dbContext.User.Remove(user);
             int queryResult = await _dbContext.SaveChangesAsync();
 
             if (queryResult <= 0)
