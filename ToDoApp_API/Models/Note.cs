@@ -9,7 +9,7 @@ public class Note{
     public string Description { get; set;} = string.Empty;
     public int state { get; set; } = 0;
     public string StartDate { get; set; } = string.Empty;
-    public string UpdateDate { get; set;} = string.Empty;
+    public string DateOnly { get; set;} = string.Empty;
 
     
 }

@@ -36,11 +36,11 @@ public class UserRepository : IUserRepository
     public async Task<bool> CreateUserAsync(User OneUser)
     {
 
-        User? exist = await _dbContext.User
+        bool exist = await _dbContext.User
                 .Where(u => u.Mail == OneUser.Mail)
-                .FirstOrDefaultAsync();
+                .AnyAsync();
 
-        if (exist is not null) 
+        if (exist) 
             throw new DbOperationException("Couldn't insert. Account already exist.");
         try
         {
