@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "ToDoApp_App.Models.User",
+        "Type": "ToDoApp_API.Dto.UserDto",
         "IsRequired": true
       }
     ],

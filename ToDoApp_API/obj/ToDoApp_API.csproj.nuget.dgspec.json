@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\psydi\\Source\\Repos\\Cle1cy\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj": {}
+    "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\psydi\\Source\\Repos\\Cle1cy\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj": {
+    "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\psydi\\Source\\Repos\\Cle1cy\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
+        "projectUniqueName": "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
         "projectName": "ToDoApp_API",
-        "projectPath": "C:\\Users\\psydi\\Source\\Repos\\Cle1cy\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
+        "projectPath": "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
         "packagesPath": "C:\\Users\\psydi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\psydi\\Source\\Repos\\Cle1cy\\ToDoApp\\ToDoApp_API\\obj\\",
+        "outputPath": "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\psydi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,6 +45,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.4, )"
@@ -87,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using ToDoApp_API.Dto;
 using ToDoApp_API.Helpers;
 using ToDoApp_API.Services;
 using ToDoApp_App.Models;
@@ -10,18 +12,23 @@ namespace ToDoApp_API.Controller
     public class UserControllers : ControllerBase
     {
         private readonly Userervice _Userervice;
+        private readonly IMapper _mapper;
 
-        public UserControllers(Userervice Userervice)
+        public UserControllers(Userervice Userervice, IMapper mapper)
         {
             _Userervice = Userervice;
+            _mapper = mapper;
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserAsync(User user)
+        public async Task<IActionResult> CreateUserAsync(UserDto user)
         {
             try
             {
-                User queryResult = await _Userervice.CreateUserAsync(user);
+                User userMapper = _mapper.Map<User>(user);
+                UserDto queryResult = _mapper.Map<UserDto>
+                    (await _Userervice.CreateUserAsync(userMapper));
 
                 return Ok(queryResult);
             }

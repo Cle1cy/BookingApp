@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using ToDoApp_API.Models;
 
@@ -6,6 +8,7 @@ namespace ToDoApp_App.Models;
 
 public class User{
 
+    [Key]
     [JsonPropertyName("id")]
     public int Id { get; set; } = 0;
     [JsonPropertyName("password")]

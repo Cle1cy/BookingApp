@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fjvQlFujJUYKpN3p7cnHRY4TLFn+a3B6of2fOVqmU/nESnJa4rFJMlg2G/G5+EjMzut3pu7RRp6OT7EiCQNucA==",
+  "dgSpecHash": "6OslK7hvj4liFUJOJjtHx9xDrf8HGtsQaLBuKrH6A64J3bc0/OIXZz3TI7vJiZZRMkqO+ZEihkxgxT0Uz1InWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\psydi\\Source\\Repos\\Cle1cy\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
+  "projectFilePath": "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\psydi\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

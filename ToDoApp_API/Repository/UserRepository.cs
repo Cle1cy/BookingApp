@@ -46,9 +46,14 @@ public class UserRepository : IUserRepository
         {
             var queryResult = await _dbContext
                     .AddAsync(OneUser);
+            
 
             if (queryResult is not null)
+            {
+                await _dbContext.SaveChangesAsync();
                 return true;
+            }
+                
             return false;
         }
         catch (DbUpdateException error)

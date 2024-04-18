@@ -3,11 +3,14 @@ using ToDoApp_API.Repository;
 using ToDoApp_API.Services;
 using Microsoft.EntityFrameworkCore;
 using ToDoApp_API.Context;
+using ToDoApp_API.Helpers;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure services
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddDbContext<DBContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
