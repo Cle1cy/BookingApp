@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6OslK7hvj4liFUJOJjtHx9xDrf8HGtsQaLBuKrH6A64J3bc0/OIXZz3TI7vJiZZRMkqO+ZEihkxgxT0Uz1InWg==",
+  "dgSpecHash": "Aj7E0L92BjG2Qwz4ccEntU5hsnC0ZHt3JFu1X8OITV+B5HQ1h4WevFywrN6lzJHV/f1Xo4QDQ27npeJn/ORc9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\psydi\\OneDrive\\Escritorio\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
+  "projectFilePath": "C:\\Users\\psydi\\OneDrive\\Escritorio\\a\\ToDoApp\\ToDoApp_API\\ToDoApp_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\psydi\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\psydi\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
