@@ -2,16 +2,30 @@
 <h3> ToDo </h3>
 
 - Update list state if 0, pending, if 1 completed
-- Update user info
-- Delete account
 - You can add, delete, or modify a task in your to do.
 - Ones you create a task it is created with the current date, if you modify it, it will be added an additional date as the last update date
+- constraint for sections
+- validation for a strong password, and a real mail
+- implement JWT Auth
+- encryption of password
+
 <h3> Task Done </h3>
+
 <details>
 <summary> Create User </summary>
+<h2> Working in documentation 😅 </h2>
 </details>
 
+<details>
+<summary> Delete account </summary>
+<h2> Working in documentation 😅 </h2>
+</details>
 
+<details>
+<summary> Update user info </summary>
+<h2> Working in documentation 😅 </h2>
+</details>
+  
 <details>
 <summary> Create DB </summary>
   
