@@ -5,11 +5,11 @@ using ToDoApp_App.Models;
 
 namespace ToDoApp_API.Services
 {
-    public class Userervice
+    public class UserService
     {
         IUserRepository _userRepository;
 
-        public Userervice(IUserRepository userRepository) 
+        public UserService(IUserRepository userRepository) 
         {  
             _userRepository = userRepository; 
         }
@@ -35,21 +35,45 @@ namespace ToDoApp_API.Services
         {
             var queryResult = await _userRepository
                     .GetUserAsync(mail);
-            if (queryResult.Id !> 0)
-                throw new AppValidationException($"Couldn't fount user with the mail: {mail}");
+            if (queryResult.Id <= 0)
+                throw new AppValidationException($"User with: {mail} don't exist");
             return queryResult;
         }
         public async Task<ICollection<User>> GetUsersAsync()
         {
-            return await _userRepository.GetUserAsync();
+            return await _userRepository.GetUsersAsync();
         }
 
-        public async Task<bool> DeleteUserAsync(string password)
+        public async Task<bool> DeleteUserAsync(string password, string mail)
         {
-            bool queryResult = await _userRepository.DeleteUserAsync(password);
+            bool queryResult = await _userRepository.DeleteUserAsync(password, mail);
             if (!queryResult) throw new AppValidationException("Operation executed but wasn't changes");
             return queryResult;
         }
 
+        public async Task<User> UpdateUserMailAsync(string mail, string targetMail)
+        {
+            bool queryResult = await _userRepository.UpdateUserMailAsync(mail, targetMail);
+            if(!queryResult) throw new AppValidationException("Operation executed but wasn't changes");
+            return await GetUserAsync(mail);
+        }
+        public async Task<User> UpdateUserPasswordAsync(string password, string mail)
+        {
+            bool queryResult = await _userRepository.UpdateUserPasswordAsync(password,mail);
+            if (!queryResult) throw new AppValidationException("Operation executed but wasn't changes");
+            return await GetUserAsync(mail);
+        }
+        public async Task<User> UpdateUserFirstNameAsync(string firtstName, string mail)
+        {
+            bool queryResult = await _userRepository.UpdateUserFirstNameAsync(firtstName, mail);
+            if (!queryResult) throw new AppValidationException("Operation executed but wasn't changes");
+            return await GetUserAsync(mail);
+        }
+        public async Task<User> UpdateUserLastNameAsync(string lastName, string mail)
+        {
+            bool queryResult = await _userRepository.UpdateUserLastNameAsync(lastName, mail);
+            if (!queryResult) throw new AppValidationException("Operation executed but wasn't changes");
+            return await GetUserAsync(mail);
+        }
     }
 }
