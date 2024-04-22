@@ -1,4 +1,20 @@
 # ToDoApp 
+<h3>Nuget</h3>
+
+```
+dotnet add package AutoMapper --version 13.0.1
+
+dotnet add package Microsoft.AspNetCore.OpenApi --version 8.0.4
+
+dotnet add package Microsoft.EntityFrameworkCore --version 8.0.4
+
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.0.4
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.0.4
+
+dotnet add package Swashbuckle.AspNetCore --version 6.5.0
+```
+
 <h3> ToDo </h3>
 
 - Update list state if 0, pending, if 1 completed
