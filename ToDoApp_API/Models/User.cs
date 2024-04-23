@@ -1,25 +1,34 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using ToDoApp_API.Models;
+
 
 namespace ToDoApp_App.Models;
 
 public class User{
 
     [Key]
-    [JsonPropertyName("id")]
+    [JsonPropertyName("Id")]
     public int Id { get; set; } = 0;
-    [JsonPropertyName("password")]
+    [JsonPropertyName("Password")]
     public string Password{get; set;} = string.Empty;
-    [JsonPropertyName("mail")]
+    [JsonPropertyName("Mail")]
     public string Mail { get; set; } = string.Empty;
-    [JsonPropertyName("firstName")]
+    [JsonPropertyName("FirstName")]
     public string FirtstName { get; set; } = string.Empty;
-    [JsonPropertyName("lastName")]
+    [JsonPropertyName("LastName")]
     public string LastName{get;set;} = string.Empty;
-    [JsonPropertyName("Note")]
-    public ICollection<Note> Note{get; set;} = new List<Note>();
+    [JsonPropertyName("Premiun")]
+    public byte Premiun{get; set; } = 0;
+    [JsonPropertyName("PaymentDate")]
+    public DateTime PaymentDate{ get; set; } = DateTime.MinValue;
+    [JsonPropertyName("Tutor")]
+    public byte Tutor{ get; set; } = 0;
+    [JsonPropertyName("UserDetail")]
+    public UserDetails? UserDetail{ get; set; } = null;
+
+    
 
 }
