@@ -1,4 +1,4 @@
-# ToDoApp 
+#  ClassroomReserves
 <h3>Nuget</h3>
 
 ```
@@ -16,11 +16,7 @@ dotnet add package Swashbuckle.AspNetCore --version 6.5.0
 ```
 
 <h3> ToDo </h3>
-
-- Update list state if 0, pending, if 1 completed
-- You can add, delete, or modify a task in your to do.
-- Ones you create a task it is created with the current date, if you modify it, it will be added an additional date as the last update date
-- constraint for sections
+- End all the Models, Dto and AutoMapper
 - validation for a strong password, and a real mail
 - implement JWT Auth
 - encryption of password
@@ -218,27 +214,83 @@ Stright to the point, simple DB for the very basic functions
 <h3> Query for DB using SQL server, with SSMS </h3>
 
 ```SQL
-CREATE TABLE [User](
-    Id INT IDENTITY(1,1) PRIMARY KEY,
-    Password VARCHAR(50) NOT NULL,
-    Mail VARCHAR(50) NOT NULL,
-    FirtstName VARCHAR(50) NOT NULL,
-    LastName VARCHAR(50) NOT NULL
+CREATE TABLE "User"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "Password" VARCHAR(50) NOT NULL,
+    "Mail" VARCHAR(50) NOT NULL,
+    "FirtstName" VARCHAR(50) NOT NULL,
+    "LastName" VARCHAR(50) NOT NULL,
+    "Premiun" TINYINT NOT NULL,
+    "PaymentDate" DATETIME NOT NULL,
+    "Tutor" TINYINT NOT NULL
 );
-CREATE TABLE [Note](
-    Id BIGINT IDENTITY(1,1) PRIMARY KEY,
-    Title VARCHAR(50) NOT NULL,
-    Description VARCHAR(50) NOT NULL,
-    CreateDate DATE NOT NULL,
-    UpdateDate DATE NOT NULL,
-    State VARCHAR(50) NOT NULL,
-    UserId INT NOT NULL,
-    FOREIGN KEY(UserId) REFERENCES [user](Id)
+
+CREATE TABLE "Message"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "Content" VARCHAR(255) NOT NULL,
+    "IdUserClassroom" INT NOT NULL,
+    "SendDate" DATETIME NOT NULL,
+    FOREIGN KEY("IdUserClassroom") REFERENCES "UsersClassroom"("Id")
 );
+
+CREATE TABLE "Tutor"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "IdUser" INT NOT NULL,
+    "IdClassroom" INT NOT NULL,
+    FOREIGN KEY("IdUser") REFERENCES "User"("Id"),
+    FOREIGN KEY("IdClassroom") REFERENCES "Classroom"("Id")
+);
+
+CREATE TABLE "Classroom"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "Block" VARCHAR(10) NOT NULL,
+    "Classroom" INT NOT NULL
+);
+
+CREATE TABLE "ClassroomForClass"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "StartDate" DATETIME NOT NULL,
+    "EndDate" DATETIME NOT NULL,
+    "Block" VARCHAR(10) NOT NULL,
+    "Classroom" INT NOT NULL
+);
+
+CREATE TABLE "UsersClassroom"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "IdClassroom" INT NOT NULL,
+    "IdUser" INT NOT NULL,
+    "StartDate" DATETIME NOT NULL,
+    "EndDate" DATETIME NOT NULL,
+    "IdConversation" INT NOT NULL,
+    FOREIGN KEY("IdClassroom") REFERENCES "Classroom"("Id"),
+    FOREIGN KEY("IdUser") REFERENCES "User"("Id")
+);
+
+CREATE TABLE "UserDetails"(
+    "id" INT IDENTITY(1,1) PRIMARY KEY,
+    "UserId" INT NOT NULL,
+    "Card" INT NOT NULL,
+    "CSV" SMALLINT NOT NULL,
+    "Date" VARCHAR(6) NOT NULL,
+    "Proprietary" VARCHAR(50) NOT NULL,
+    "CardType" VARCHAR(25) NOT NULL,
+    "PaymentInfo" VARCHAR(255) NOT NULL,
+    FOREIGN KEY("UserId") REFERENCES "User"("Id")
+);
+
+CREATE TABLE "Friends"(
+    "Id" INT IDENTITY(1,1) PRIMARY KEY,
+    "IdUser" INT NOT NULL,
+    "IdFriend" INT NOT NULL,
+    FOREIGN KEY("IdUser") REFERENCES "User"("Id"),
+    FOREIGN KEY("IdFriend") REFERENCES "User"("Id")
+);
+
 ```
 <h3> Diagram </h3> 
 
-![image](https://github.com/Cle1cy/ToDoApp/assets/72827264/2b1fa7ea-c96c-4f70-8ffc-d6518d83e6df)
+![Screenshot from 2024-04-23 11-22-19](https://github.com/Cle1cy/ClassroomReserves/assets/72827264/66768579-4db5-45c8-b080-b9ab2e06a4da)
+
 </details>
 
 
