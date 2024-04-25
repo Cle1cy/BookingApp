@@ -1,18 +1,19 @@
-using Microsoft.AspNetCore.Identity;
+
 using ToDoApp_App.Models;
 
 namespace ToDoApp_API.Interfaces;
 
-public interface IUserClassroom{
+public interface IUserClassroomRepository{
 
     //GET ---------------------------------------------------->
     //Get all the classrooms where an user is part from
     Task<ICollection<UserClassroom>> GetUserClassroomsAsync(int idUser);
     //Search all classroosm that will be use in the next days
     //filtred by Subject,Topic, and start date
-    Task<ICollection<UserClassroom>> GetUserClassroomsAsync(string subject, string topic, 
-                                                            DateTime startDate
+    Task<ICollection<UserClassroom>> GetUsersClassroomsAsync(string subject, string topic, 
+                                                            DateTime? startDate
                                                             );
+    Task<int> GetUserClassroomConversationIdasync(int idUser);
     //DELETE ------------------------------------------------->
     //Delete an user from a classroom
     Task<bool> DeleteUserClassroomAsync(int idUser, int conversationId);
@@ -25,7 +26,7 @@ public interface IUserClassroom{
                                             string subject, string topic,
                                             DateTime startDate, DateTime endDate  
                                         );
-
+    Task<bool> CreateUserJoinClassroomAsync(int conversationId);
 
     //
 }
