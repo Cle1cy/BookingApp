@@ -3,7 +3,7 @@ using ToDoApp_App.Models;
 
 namespace ToDoApp_API.Models;
 
-public class TutorDetails{
+public class TutorDetail{
     [JsonPropertyName("Id")]
     public User? Id { get; set;} = null;
     [JsonPropertyName("Aptitudes")]
