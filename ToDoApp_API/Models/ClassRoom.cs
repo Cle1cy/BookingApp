@@ -7,8 +7,8 @@ public class ClassRoom{
     [JsonPropertyName("Id")]
     public int Id { get; set;} = 0;
     [JsonPropertyName("Block")]
-    public string Block{ get; set;} = "";
+    public string Block{ get; set;} = string.Empty;
     [JsonPropertyName("Class")]
-    public int Class { get; set; } = 0;
+    public string Class { get; set; } = string.Empty;
     
  }

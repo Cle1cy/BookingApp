@@ -2,23 +2,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace ToDoApp_App.Models;
-public class UserDetails {
+public class UserPayment {
 
-    [Key]
     [JsonPropertyName("Id")]
-    public int Id { get; set; } = 0;
+    public User? Id { get; set; } = null;
     [JsonPropertyName("User")]
-    public User? User { get; set; } = null;
-    [JsonPropertyName("Card")]
     public int Card { get; set; } = 0;
     [JsonPropertyName("Csv")]
     public short Csv { get; set; } = 0;
     [JsonPropertyName("Date")]
-    public string Date { get; set; } = "";
+    public string Date { get; set; } = string.Empty;
     [JsonPropertyName("Proprietary")]
-    public string Proprietary { get; set; } = "";
+    public string Proprietary { get; set; } = string.Empty;
     [JsonPropertyName("CardType")]
-    public string CardType {get; set; } = "";
+    public string CardType {get; set; } = string.Empty;
     [JsonPropertyName("PaymentInfo")]
-    public string PaymentInfo { get; set; } = "";
+    public string PaymentInfo { get; set; } = string.Empty;
 }

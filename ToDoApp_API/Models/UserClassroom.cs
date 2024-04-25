@@ -7,10 +7,10 @@ public class UserClassroom{
     [JsonPropertyName("Id")]
     public int Id { get; set;}
     [JsonPropertyName("Users")]
-    public ICollection<User>? Users { get; set;} = null;
-    [JsonPropertyName("ClassRooms")]
     public ICollection<ClassRoom>? ClassRooms { get; set;} = null;
     [JsonPropertyName("StartDate")]
+    public ICollection<User>? Users { get; set;} = null;
+    [JsonPropertyName("ClassRooms")]
     public DateTime StartDate { get; set; } = DateTime.MinValue;
     [JsonPropertyName("EndDate")]
     public DateTime EndDate { get; set; } = DateTime.MinValue;

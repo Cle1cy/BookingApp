@@ -20,15 +20,5 @@ public class User{
     public string FirtstName { get; set; } = string.Empty;
     [JsonPropertyName("LastName")]
     public string LastName{get;set;} = string.Empty;
-    [JsonPropertyName("Premiun")]
-    public byte Premiun{get; set; } = 0;
-    [JsonPropertyName("PaymentDate")]
-    public DateTime PaymentDate{ get; set; } = DateTime.MinValue;
-    [JsonPropertyName("Tutor")]
-    public byte Tutor{ get; set; } = 0;
-    [JsonPropertyName("UserDetail")]
-    public UserDetails? UserDetail{ get; set; } = null;
-
-    
-
+   
 }

@@ -7,7 +7,7 @@ public class Message{
     [JsonPropertyName("Id")]
     public int Id { get; set;} = 0;
     [JsonPropertyName("Content")]
-    public string Content{ get; set;} = "";
+    public string Content{ get; set;} = string.Empty;
     [JsonPropertyName("SendDate")]
     public DateTime SendDate { get; set;} = DateTime.MinValue;
 }
