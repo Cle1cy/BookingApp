@@ -11,6 +11,8 @@ namespace ToDoApp_API.Helpers
         {
             CreateMap<User, UserDto>();
             CreateMap<UserDto , User>();
+            CreateMap<UserClassroom, UserClassroomDto>();
+            CreateMap<UserClassroomDto, UserClassroom>();
         }
     }
 }

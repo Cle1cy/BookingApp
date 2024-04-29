@@ -17,8 +17,4 @@ public class DBContext : DbContext
     public DbSet<UserFriend> UserFriends { get; set; }
     public DbSet<UserPayment> UserPayment { get; set; }
 
-    internal async Task GetUserClassroomsAsync(int idUser)
-    {
-        throw new NotImplementedException();
-    }
 }
