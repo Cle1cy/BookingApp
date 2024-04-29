@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.IdentityModel.Tokens;
 using ToDoApp_API.Context;
 using ToDoApp_API.Helpers;
@@ -21,10 +22,31 @@ public class UserClassroomRepository : IUserClassroomRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> CreateUserToClassroomAsync(UserClassroom userClassroom)
+    public async Task<bool> CreateUserToClassroomAsync(UserClassroom userClassroom)
     {
-        var queryResult =  _dBContext.UserClassroom
-            .Add(userClassroom);
+        //get all base classrooms
+        var classRoom = await _dBContext.ClassRooms
+            .ToListAsync();
+        //searching if ther is any classroom with not use at all
+        var noClassRoomInUse =  await _dBContext.UserClassroom
+            .Select(uc => classRoom.Except(uc.ClassRooms))
+            .ToListAsync();
+        
+        if(noClassRoomInUse is not null){
+            //there is no any UserClassroom that not exist in ClassRoom
+            //search for any classroom free in the period of time
+            var queryResult = await _dBContext.UserClassroom
+                .Where( uc => 
+                        uc.StartDate >= userClassroom.StartDate &&
+                        uc.EndDate <= userClassroom.EndDate)
+                .Select(uc => uc.ClassRooms)
+                .FirstOrDefaultAsync();
+            //add the free classroom in that time to our userClassroom
+            if(queryResult is not null){
+                userClassroom.ClassRooms = queryResult;                
+            } 
+        }
+
     }
 
     public Task<bool> DeleteUserClassroomAsync(int idUser, int conversationId)
