@@ -1,10 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using Microsoft.IdentityModel.Tokens;
 using BookingApp_API.Context;
 using BookingApp_API.Helpers;
 using BookingApp_API.Interfaces;
 using BookingApp_API.Models;
+
 
 namespace BookingApp_API.Repository;
  
@@ -12,14 +11,38 @@ public class UserClassroomRepository : IUserClassroomRepository
 {
 
     private DBContext _dBContext;
+    public UserRepository userRepository;
 
     public UserClassroomRepository(DBContext context){
 
         _dBContext = context;
     }
-    public Task<bool> CreateUserJoinClassroomAsync(int conversationId)
+    public async Task<bool> CreateUserJoinClassroomAsync(int conversationId, string mail)
     {
-        throw new NotImplementedException();
+        var joinClassroom = await _dBContext.UserClassroom
+            .Where(uc => uc.ConversationId == conversationId)
+            .FirstOrDefaultAsync();
+        if (joinClassroom is null) 
+            throw new DbOperationException($"Couldn't find the classroom group with id {conversationId}");
+        User user = await userRepository.GetUserAsync(mail);
+        UserClassroom newUserClassroom = joinClassroom;
+        newUserClassroom.Users = (ICollection<User>?) user;
+
+        try
+        {
+            var queryResult = await _dBContext.UserClassroom
+                .AddAsync(newUserClassroom);
+            if (queryResult is not null) {
+                await _dBContext.SaveChangesAsync();
+                return true;
+            }return false;
+        }
+        catch(DbOperationException error)
+        {
+            throw new DbOperationException(error.Message);
+        }
+
+        
     }
 
     public async Task<bool> CreateUserToClassroomAsync(UserClassroom userClassroom)
@@ -94,14 +117,30 @@ public class UserClassroomRepository : IUserClassroomRepository
 
     }
 
-    public Task<bool> DeleteUserClassroomAsync(int idUser, int conversationId)
+    public async Task<bool> DeleteUserClassroomAsync(int idUser, int conversationId)
     {
-        throw new NotImplementedException();
-    }
+        var userClassroom = await _dBContext.UserClassroom
+            .Where(uc => uc.Id == idUser && uc.ConversationId == conversationId)
+            .FirstOrDefaultAsync();
 
-    public async Task<int> GetUserClassroomConversationIdasync(int idUser)
-    {
-        throw new NotImplementedException();
+        if (userClassroom is null) 
+            throw new DbOperationException( $"User wiht id: {idUser}" +
+                                            $"is not in the classroom group " +
+                                            $"with id: {conversationId}");
+        try
+        {
+            _dBContext.UserClassroom.Remove(userClassroom)
+            int queryResult = await _dBContext.SaveChangesAsync();
+
+            if (queryResult <= 0)
+                return true;
+            return false
+        }catch(DbOperationException error)
+        {
+            throw new DbOperationException(error.Message);
+        }
+ 
+
     }
 
     public async Task<ICollection<UserClassroom>> GetUserClassroomsAsync(int idUser)

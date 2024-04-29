@@ -13,7 +13,6 @@ public interface IUserClassroomRepository{
     Task<ICollection<UserClassroom>> GetUsersClassroomsAsync(string subject, string topic, 
                                                             DateTime? startDate
                                                             );
-    Task<int> GetUserClassroomConversationIdasync(int idUser);
     //DELETE ------------------------------------------------->
     //Delete an user from a classroom
     Task<bool> DeleteUserClassroomAsync(int idUser, int conversationId);
@@ -23,7 +22,7 @@ public interface IUserClassroomRepository{
     //select subject and topic for the study secion
     //MUST GENERATE A CONVERSATION ID
     Task<bool> CreateUserToClassroomAsync(UserClassroom userClassroom);
-    Task<bool> CreateUserJoinClassroomAsync(int conversationId);
+    Task<bool> CreateUserJoinClassroomAsync(int conversationId, string mail);
 
     //
 }

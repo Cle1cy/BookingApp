@@ -76,7 +76,7 @@ public class UserRepository : IUserRepository
         if(user == null) throw new DbOperationException("Couldn't delete, user doesn't exist");
         try
         {
-            _dbContext.User.Remove(user);
+             _dbContext.User.Remove(user);
             int queryResult = await _dbContext.SaveChangesAsync();
 
             if (queryResult <= 0)
