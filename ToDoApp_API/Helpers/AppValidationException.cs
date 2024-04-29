@@ -1,4 +1,4 @@
-﻿namespace ToDoApp_API.Helpers
+﻿namespace BookingApp_API.Helpers
 {
     public class AppValidationException:Exception
     {

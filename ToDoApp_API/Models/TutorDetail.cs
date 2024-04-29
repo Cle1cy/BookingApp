@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
-using ToDoApp_App.Models;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Models;
+namespace BookingApp_API.Models;
 
 public class TutorDetail{
     [JsonPropertyName("Id")]

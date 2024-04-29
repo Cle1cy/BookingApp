@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 
-namespace ToDoApp_App.Models;
+namespace BookingApp_API.Models;
 
 public class User{
 

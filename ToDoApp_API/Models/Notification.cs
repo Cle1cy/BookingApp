@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace ToDoApp_App.Models;
+namespace BookingApp_API.Models;
 public class Notification{
 
     [JsonPropertyName("Id")]

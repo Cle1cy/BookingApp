@@ -1,6 +1,6 @@
-using ToDoApp_App.Models;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Interfaces;
+namespace BookingApp_API.Interfaces;
 public interface IUserRepository{
     // GETTERS
     Task<ICollection<User>> GetUsersAsync();

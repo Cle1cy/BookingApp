@@ -1,13 +1,13 @@
-namespace ToDoApp_API.Repository;
+namespace BookingApp_API.Repository;
 
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ToDoApp_API.Context;
-using ToDoApp_API.Helpers;
-using ToDoApp_API.Interfaces;
-using ToDoApp_API.Services;
-using ToDoApp_App.Models;
+using BookingApp_API.Context;
+using BookingApp_API.Helpers;
+using BookingApp_API.Interfaces;
+using BookingApp_API.Services;
+using BookingApp_API.Models;
 
 public class UserRepository : IUserRepository
 {

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using ToDoApp_App.Models;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Dto
+namespace BookingApp_API.Dto
 {
     public class UserClassroomDto 
     {

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using ToDoApp_API.Dto;
-using ToDoApp_API.Helpers;
-using ToDoApp_API.Services;
-using ToDoApp_App.Models;
+using BookingApp_API.Dto;
+using BookingApp_API.Helpers;
+using BookingApp_API.Services;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Controller
+namespace BookingApp_API.Controller
 {
     [Route("api/[Controller]")]
     [ApiController]

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace ToDoApp_App.Models;
+namespace BookingApp_API.Models;
 public class UserFriend{
     
     [JsonPropertyName("Id")]

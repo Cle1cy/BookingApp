@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using ToDoApp_API.Models;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Dto
+namespace BookingApp_API.Dto
 {
     public class UserDto
     {

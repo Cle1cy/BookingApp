@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using System.Runtime;
-using ToDoApp_API.Dto;
-using ToDoApp_App.Models;
+using BookingApp_API.Dto;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Helpers
+namespace BookingApp_API.Helpers
 {
     public class MappingProfile : Profile
     {

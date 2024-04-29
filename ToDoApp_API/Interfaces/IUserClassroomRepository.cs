@@ -1,7 +1,7 @@
 
-using ToDoApp_App.Models;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Interfaces;
+namespace BookingApp_API.Interfaces;
 
 public interface IUserClassroomRepository{
 
@@ -22,10 +22,7 @@ public interface IUserClassroomRepository{
     //The user is attached to a random free classroom in a date withe a range of time,
     //select subject and topic for the study secion
     //MUST GENERATE A CONVERSATION ID
-    Task<bool> CreateUserToClassroomAsync(  int idUser,
-                                            string subject, string topic,
-                                            DateTime startDate, DateTime endDate  
-                                        );
+    Task<bool> CreateUserToClassroomAsync(UserClassroom userClassroom);
     Task<bool> CreateUserJoinClassroomAsync(int conversationId);
 
     //

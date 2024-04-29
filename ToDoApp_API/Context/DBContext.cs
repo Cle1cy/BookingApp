@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ToDoApp_API.Models;
-using ToDoApp_App.Models;
-namespace ToDoApp_API.Context;
+using BookingApp_API.Models;
+namespace BookingApp_API.Context;
 
 public class DBContext : DbContext
 {

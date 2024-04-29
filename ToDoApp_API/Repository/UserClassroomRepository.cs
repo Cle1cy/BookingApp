@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.IdentityModel.Tokens;
-using ToDoApp_API.Context;
-using ToDoApp_API.Helpers;
-using ToDoApp_API.Interfaces;
-using ToDoApp_App.Models;
+using BookingApp_API.Context;
+using BookingApp_API.Helpers;
+using BookingApp_API.Interfaces;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Repository;
+namespace BookingApp_API.Repository;
  
 public class UserClassroomRepository : IUserClassroomRepository 
 {

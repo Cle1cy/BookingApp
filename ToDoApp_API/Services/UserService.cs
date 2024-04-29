@@ -1,9 +1,9 @@
 ﻿
-using ToDoApp_API.Helpers;
-using ToDoApp_API.Interfaces;
-using ToDoApp_App.Models;
+using BookingApp_API.Helpers;
+using BookingApp_API.Interfaces;
+using BookingApp_API.Models;
 
-namespace ToDoApp_API.Services
+namespace BookingApp_API.Services
 {
     public class UserService
     {
