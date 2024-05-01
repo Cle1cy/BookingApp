@@ -134,7 +134,7 @@ public class UserClassroomRepository : IUserClassroomRepository
 
             if (queryResult <= 0)
                 return true;
-            return false
+            return false;
         }catch(DbOperationException error)
         {
             throw new DbOperationException(error.Message);
@@ -154,55 +154,61 @@ public class UserClassroomRepository : IUserClassroomRepository
         } throw new DbOperationException("The user is not attached to any classroom");
     }
 
-    public async Task<ICollection<UserClassroom>> GetUsersClassroomsAsync(  string subject, string topic, 
+    public async Task<ICollection<UserClassroom>> GetUsersClassroomsAsync(  TopicsForSubject topicsForSubjects,
                                                                             DateTime? startDate)
     {
         ICollection<UserClassroom> queryResult;
         if(startDate is null)
         {
             queryResult = await _dBContext.UserClassroom
-                .Where( uc => uc.Subject == subject && 
-                        uc.Topic == topic)
+                .Where( uc => 
+                        uc.TopicsForSubject.All(ts => ts.Topic == topicsForSubjects.Topic) && 
+                        uc.TopicsForSubject.All(ts => ts.Subject == topicsForSubjects.Subject))
                 .ToListAsync();
         }
-        else if(string.IsNullOrEmpty(subject))
+        else if(string.IsNullOrEmpty(topicsForSubjects.Subject))
         {
             queryResult = await _dBContext.UserClassroom
-                .Where( uc => uc.Topic == topic &&
+                .Where( uc => 
+                        uc.TopicsForSubject.All(ts => ts.Topic == topicsForSubjects.Topic) &&
                         uc.StartDate == startDate)
                 .ToListAsync();
         }
-        else if(string.IsNullOrEmpty(topic))
+        else if(string.IsNullOrEmpty(topicsForSubjects.Topic))
         {
             queryResult = await _dBContext.UserClassroom
-                .Where( uc => uc.Subject == subject && 
+                .Where( uc => 
+                        uc.TopicsForSubject.All(ts => ts.Subject == topicsForSubjects.Subject) && 
                         uc.StartDate == startDate)
                 .ToListAsync();
         }
-        else if(string.IsNullOrEmpty(topic) && string.IsNullOrEmpty(subject))
+        else if(string.IsNullOrEmpty(topicsForSubjects.Topic) && string.IsNullOrEmpty(topicsForSubjects.Subject))
         {
             queryResult = await _dBContext.UserClassroom
                 .Where( uc => uc.StartDate == startDate)
                 .ToListAsync();
         }
-        else if(string.IsNullOrEmpty(subject) && startDate is not null){
+        else if(string.IsNullOrEmpty(topicsForSubjects.Subject) && startDate is not null){
 
             queryResult = await _dBContext.UserClassroom
-                .Where( uc => uc.Topic == topic)
+                .Where( uc => uc.TopicsForSubject.All(ts => ts.Topic == topicsForSubjects.Topic))
+                .ToListAsync();
+        }
+        else if(string.IsNullOrEmpty(topicsForSubjects.Topic) && startDate is not null)
+        {
+            queryResult = await _dBContext.UserClassroom
+                .Where( uc => uc.TopicsForSubject.All(ts => ts.Subject == topicsForSubjects.Subject))
                 .ToListAsync();
         }
         else
         {
             queryResult = await _dBContext.UserClassroom
-                .Where( uc => uc.Subject == subject )
-                .ToListAsync();
+            .Where(uc =>
+            uc.TopicsForSubject.All(ts => ts.Subject == topicsForSubjects.Subject) &&
+            uc.TopicsForSubject.All(ts => ts.Topic == topicsForSubjects.Topic) &&
+            uc.StartDate == startDate)
+            .ToListAsync();
         }
-
-        queryResult = await _dBContext.UserClassroom
-            .Where( uc => uc.Subject == subject && 
-                    uc.Topic == topic &&
-                    uc.StartDate == startDate)
-                    .ToListAsync();
 
         if(queryResult.Any()){
             return queryResult;

@@ -20,10 +20,8 @@ public class UserClassroom{
     public ICollection<Message>? Messages { get; set; } = null;
     [JsonPropertyName("Tutor")]
     public User? Tutor { get; set; } = null;
-    [JsonPropertyName("Subject")]
-    public string Subject {get; set;} = string.Empty;
-    [JsonPropertyName("Topic")]
-    public string Topic { get; set;} = string.Empty;
+    [JsonPropertyName("TopicsForSubject")]
+    public ICollection<TopicsForSubject>? TopicsForSubject { get; set; } = null;
 
 
 }

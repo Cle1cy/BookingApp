@@ -15,5 +15,6 @@ public class DBContext : DbContext
     public DbSet<UserClassroom> UserClassroom { get; set; }
     public DbSet<UserFriend> UserFriends { get; set; }
     public DbSet<UserPayment> UserPayment { get; set; }
+    public DbSet<TopicsForSubject> TopicsForSubject { get; set; }
 
 }

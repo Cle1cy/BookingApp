@@ -10,7 +10,7 @@ public interface IUserClassroomRepository{
     Task<ICollection<UserClassroom>> GetUserClassroomsAsync(int idUser);
     //Search all classroosm that will be use in the next days
     //filtred by Subject,Topic, and start date
-    Task<ICollection<UserClassroom>> GetUsersClassroomsAsync(string subject, string topic, 
+    Task<ICollection<UserClassroom>> GetUsersClassroomsAsync(TopicsForSubject topicsForSubject,
                                                             DateTime? startDate
                                                             );
     //DELETE ------------------------------------------------->
