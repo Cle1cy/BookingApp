@@ -1,7 +1,7 @@
 #  ClassroomReserves
 <h3>Nuget</h3>
 
-```
+```CLI
 dotnet add package AutoMapper --version 13.0.1
 
 dotnet add package Microsoft.AspNetCore.OpenApi --version 8.0.4
